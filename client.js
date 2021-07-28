@@ -6,10 +6,16 @@ const connect = function () {
     host: '135.23.223.133', // IP address here,
     port: '50542', // PORT number here,
   });
-
+  conn.Name 
+  
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
+  conn.on('connect', () => {
+    console.log('Successfully connected to game server');
+    conn.write("Name: BAC");
+  })
+  
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
@@ -17,7 +23,7 @@ const connect = function () {
   return conn;
 };
 
-console.log("Connecting ...");
+// console.log("Connecting ...");
 connect();
 
 module.exports = {
